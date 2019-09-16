@@ -1,0 +1,61 @@
+{
+  "name": "bosco-core",
+  "version": "0.0.1",
+  "description": "Bosco core object. Responsible to load the configuration and ",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "nyc mocha",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test",
+      "pre-push": "npm audit"
+    }
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "keywords": [
+    "micro",
+    "service",
+    "build",
+    "automation",
+    "minification",
+    "s3",
+    "project"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tes/bosco.git"
+  },
+  "author": "clifton.cunningham@tes.co.uk",
+  "license": "MIT",
+  "dependencies": {
+    "appdirectory": "^0.1.0",
+    "async": "^3.1.0",
+    "fs-extra": "^8.1.0",
+    "ip": "^1.1.5",
+    "knoxy": "^1.0.3",
+    "lodash": "^4.17.15",
+    "osenv": "^0.1.5",
+    "progress": "^2.0.3",
+    "prompt": "^1.0.0",
+    "request": "^2.88.0",
+    "semver": "^6.3.0",
+    "sf": "^0.2.0"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.6",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "expect.js": "^0.3.1",
+    "husky": "^3.0.5",
+    "mocha": "^6.2.0",
+    "npm-audit-helper": "^2.3.18",
+    "nyc": "^14.1.1",
+    "sinon": "^7.4.2"
+  }
+}

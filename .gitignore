@@ -1,0 +1,11 @@
+.idea
+*.iml
+node_modules
+TSLEducation
+tes
+.DS_Store
+./bosco.json
+.bosco
+npm-debug.log
+coverage
+/.nyc_output/
