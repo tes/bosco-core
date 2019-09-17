@@ -26,6 +26,11 @@ const addCommandOptions = require('./add-command-options');
 prompt.message = 'Bosco'.green;
 
 class Bosco extends EventEmitter {
+  constructor(boscoDirectory) {
+    super();
+    this.boscoDirectory = boscoDirectory;
+  }
+
   init(options = {}) {
     this._defaults = {
       _defaultConfig: [__dirname, '../config/bosco.json'].join('/'),
@@ -72,7 +77,8 @@ class Bosco extends EventEmitter {
     };
   }
 
-  initWithCommandLineArgs(pkg) {
+  initWithCommandLineArgs() {
+    const pkg = require(path.join(this.boscoDirectory, 'package.json')); // eslint-disable-line import/no-dynamic-require,global-require,max-len
     const globalCommand = {
       name: '',
       usage: '[<options>] <command> [<args>]',
@@ -183,7 +189,6 @@ class Bosco extends EventEmitter {
   run() {
     this._init((err) => {
       this._checkVersion();
-
       if (err) return this.console.log(err);
 
       // Workspace found by reverse lookup in config - github team >> workspace.
@@ -308,8 +313,8 @@ class Bosco extends EventEmitter {
     const { args } = this.options;
     const command = args.shift();
     this.command = command;
-    const globalCommandModule = [this.getGlobalCommandFolder(), command, '.js'].join('');
-    const localCommandModule = [this.getLocalCommandFolder(), command, '.js'].join('');
+    const globalCommandModule = `${this.getGlobalCommandFolder()}${command}.js`;
+    const localCommandModule = `${this.getLocalCommandFolder()}${command}.js`;
     let commandModule;
     let module;
 
@@ -510,7 +515,7 @@ class Bosco extends EventEmitter {
   }
 
   getGlobalCommandFolder() { // eslint-disable-line class-methods-use-this
-    return [__dirname, '/', 'commands', '/'].join('');
+    return [this.boscoDirectory, '/', 'commands', '/'].join('');
   }
 
   getLocalCommandFolder() {
