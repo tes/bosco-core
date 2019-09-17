@@ -36,6 +36,7 @@
   "dependencies": {
     "appdirectory": "^0.1.0",
     "async": "^3.1.0",
+    "colors": "^1.3.3",
     "fs-extra": "^8.1.0",
     "ip": "^1.1.5",
     "knoxy": "^1.0.3",

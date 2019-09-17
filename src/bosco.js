@@ -3,6 +3,7 @@
  * Core bosco libraries
  */
 
+require('colors'); // No need to define elsewhere
 const _ = require('lodash');
 const AppDirectory = require('appdirectory');
 const async = require('async');
