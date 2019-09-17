@@ -1,5 +1,4 @@
-'use strict';
 
-var Bosco = require('./src/bosco');
+const Bosco = require('./src/bosco');
 
 module.exports = Bosco;
