@@ -22,6 +22,7 @@ const nconf = require('nconf');
 const os = require('os');
 const yargs = require('yargs');
 const addCommandOptions = require('./add-command-options');
+const getCmdHelper = require('./getCmdHelper');
 
 prompt.message = 'Bosco'.green;
 
@@ -29,6 +30,7 @@ class Bosco extends EventEmitter {
   constructor(boscoDirectory) {
     super();
     this.boscoDirectory = boscoDirectory;
+    this.cmdHelper = getCmdHelper(this);
   }
 
   init(options = {}) {
