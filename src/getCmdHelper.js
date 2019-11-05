@@ -142,7 +142,7 @@ function getCmdHelper(bosco) {
 
       options.guardFn(bosco, repoPath, options, (err) => {
         if (err) return repoCb(err);
-        execute(bosco, options.cmd, options.args, repoPath, options, repoCb);
+        execute(options.cmd, options.args, repoPath, options, repoCb);
       });
     }, (err) => {
       if (options.dieOnError) return next(err);
