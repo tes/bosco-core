@@ -1,6 +1,6 @@
 {
   "name": "bosco-core",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Bosco core object. Responsible to load the configuration and ",
   "main": "index.js",
   "scripts": {
