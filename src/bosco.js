@@ -341,14 +341,17 @@ class Bosco extends EventEmitter {
         return process.exit(1);
       }
 
-      return module.cmd(this, args, (err) => {
+      const isPromise = (module.cmd instanceof Object.getPrototypeOf(async () => {}).constructor); // is an async function
+      const handler = (err) => {
         let code = 0;
         if (err) {
           code = 1;
           if (err.code > 0) code = err.code;
         }
         process.exit(code);
-      });
+      };
+      if (isPromise) return module.cmd(this, args).then(() => process.exit(0)).catch(handler);
+      return module.cmd(this, args, handler);
     }
 
     if (this.options.shellCommands) return this._shellCommands();

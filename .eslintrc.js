@@ -2,7 +2,6 @@ module.exports = {
   env: {
     browser: false,
     commonjs: true,
-    es6: false,
   },
   extends: [
     'airbnb-base',
@@ -17,5 +16,6 @@ module.exports = {
   rules: {
     "no-underscore-dangle": 0,
     "consistent-return": 0,
+    "max-len": 0,
   },
 };
